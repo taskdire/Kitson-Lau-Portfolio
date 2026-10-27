@@ -51,16 +51,6 @@ Focused on the technical conversion of linear reciprocating force into rotationa
 // ── Experience (used by ExperienceCard.vue) ─────────────────
 export const experiences = [
   {
-    role: 'Intern',
-    org: 'Summer Design Institute / SYEP',
-    period: 'July 2025 – August 2025',
-    bullets: [
-      'Spearheaded a drone aviation curriculum for the cohort.',
-      'Utilized CAD for technical modeling and design iteration.',
-      'Collaborated in a high-velocity team to meet complex deadlines.',
-    ],
-  },
-  {
     role: 'Private Tutor',
     org: 'Independent / Staten Island',
     period: 'Feb 2026 – Present',
@@ -77,6 +67,16 @@ export const experiences = [
       'Leading 30+ members in electronics & robotics projects.',
       'Organized three inter-school competitions.',
       'Secured $4k in equipment funding.',
+    ],
+  },
+  {
+    role: 'Intern',
+    org: 'Summer Design Institute / SYEP',
+    period: 'July 2025 – August 2025',
+    bullets: [
+      'Spearheaded a drone aviation curriculum for the cohort.',
+      'Utilized CAD for technical modeling and design iteration.',
+      'Collaborated in a high-velocity team to meet complex deadlines.',
     ],
   },
   {
@@ -112,7 +112,7 @@ export const marqueeSkills = [
 export const certs = [
   {
     name: 'Amateur Radio License',
-    issuer: 'FCC — Technician Class',
+    issuer: 'FCC — General Class · KE2DWI',
     type: 'radio',
     bg: 'rgba(99,102,241,0.18)',
   },

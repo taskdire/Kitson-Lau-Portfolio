@@ -73,16 +73,19 @@
 
         <!-- Thumbnail strip — add real images via thumbs[].img in data/index.js -->
         <div class="proj-thumbs" v-if="current.thumbs?.length">
-          <div
+          <button
+            type="button"
             v-for="(thumb, ti) in current.thumbs"
             :key="ti"
             class="proj-thumb"
             :class="{ 'active-thumb': ti === selectedThumbIdx }"
+            :aria-label="`Show ${thumb.label.toLowerCase()} preview`"
+            :aria-pressed="ti === selectedThumbIdx"
             @click="selectedThumbIdx = ti"
-            style="cursor:pointer;"
           >
+            <img v-if="!thumb.video" :src="thumb.img" alt="" loading="lazy" />
             <span>{{ thumb.label }}</span>
-          </div>
+          </button>
         </div>
 
         <!-- Text content -->

@@ -1,14 +1,5 @@
 <template>
   <div class="card">
-
-    <!-- Status pill -->
-    <span class="pill">
-      <span class="pill-dot"></span>{{ personal.status }}
-    </span>
-
-    <!-- Name -->
-    <h1 class="hero-name">{{ personal.name }}</h1>
-    <p class="hero-title">{{ personal.title }}</p>
     <p class="hero-bio">{{ personal.bio }}</p>
 
     <!-- Stats row -->
@@ -30,7 +21,7 @@
     <div class="skills-pill-row">
       <span
         v-for="s in marqueeSkills" :key="s"
-        claskillss="badge"
+        class="badge"
       >{{ s }}</span>
     </div>
 
