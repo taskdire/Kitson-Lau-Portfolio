@@ -24,7 +24,7 @@
     </header>
 
     <main>
-      <Transition :name="`page-${transitionDirection}`">
+      <Transition :name="`page-${transitionDirection}`" mode="out-in">
         <section :key="activePage.id" class="page-view" :class="`view-${activePage.id}`">
           <template v-if="activePage.id === 'home'">
             <section class="home-hero">

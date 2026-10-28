@@ -1110,30 +1110,21 @@ main {
 }
 
 .page-left-enter-active,
+.page-right-enter-active {
+  transition: opacity 380ms ease;
+}
+
 .page-left-leave-active,
-.page-right-enter-active,
 .page-right-leave-active {
-  transition: opacity 420ms ease, transform 520ms cubic-bezier(0.22, 1, 0.36, 1);
-}
-
-.page-left-enter-from {
   opacity: 0;
-  transform: translateX(24px);
+  transition: none;
 }
 
-.page-left-leave-to {
-  opacity: 0;
-  transform: translateX(-24px);
-}
-
-.page-right-enter-from {
-  opacity: 0;
-  transform: translateX(-24px);
-}
-
+.page-left-enter-from,
+.page-left-leave-to,
+.page-right-enter-from,
 .page-right-leave-to {
   opacity: 0;
-  transform: translateX(24px);
 }
 
 @media (max-width: 980px) {
@@ -1279,7 +1270,6 @@ main {
 .home-hero-copy {
   width: 100%;
   max-width: 1000px;
-  animation: hero-arrive 650ms cubic-bezier(0.22, 1, 0.36, 1) both;
 }
 
 .home-kicker {
@@ -1309,17 +1299,6 @@ main {
 
 .view-portfolio {
   max-width: 1000px;
-}
-
-@keyframes hero-arrive {
-  from {
-    opacity: 0;
-    transform: translateY(14px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
 }
 
 @media (max-width: 980px) {
@@ -1378,12 +1357,6 @@ main {
 
 }
 
-@media (prefers-reduced-motion: reduce) {
-  .home-hero-copy {
-    animation: none;
-  }
-}
-
 /* ── Tab view backgrounds and centered layouts ─────────────── */
 .site-shell:not(.home-shell) .page-view {
   width: 100%;
@@ -1402,6 +1375,7 @@ main {
   display: grid;
   grid-template-columns: minmax(0, 1fr);
   isolation: isolate;
+  background-color: #101113;
 }
 
 .site-shell:not(.home-shell) main {
@@ -1409,7 +1383,9 @@ main {
   margin-left: -24px;
 }
 
-.site-shell:not(.home-shell) .page-view {
+.site-shell main > .page-view {
+  width: 100%;
+  max-width: none;
   grid-area: 1 / 1;
   align-self: start;
 }
@@ -1469,7 +1445,7 @@ main {
 }
 
 .view-portfolio .c-proj {
-  width: min(940px, 100%);
+  width: min(1180px, 100%);
   min-height: 0;
   margin: 0 auto;
   padding: clamp(1.25rem, 3vw, 2rem);
@@ -1982,4 +1958,78 @@ body,
     justify-content: center;
     transform: none;
   }
+}
+
+/* Keep the header and stage fixed between tab shells. */
+.site-shell:not(.home-shell) {
+  display: block;
+  height: 100dvh;
+  padding: 0;
+}
+
+.site-shell:not(.home-shell) .site-header {
+  position: absolute;
+  z-index: 3;
+  top: 0;
+  left: 0;
+  width: 100%;
+  min-height: 76px;
+  padding: 0 24px;
+  box-sizing: border-box;
+  border-bottom-color: rgba(255, 255, 255, 0.18);
+  color: #fff;
+}
+
+.site-shell:not(.home-shell) .site-nav button {
+  color: inherit;
+}
+
+.site-shell:not(.home-shell) .site-nav button:hover,
+.site-shell:not(.home-shell) .site-nav button.active {
+  border-bottom-color: #fff;
+  color: #fff;
+}
+
+.site-shell:not(.home-shell) main {
+  position: absolute;
+  inset: 0;
+  width: auto;
+  height: auto;
+  min-height: 0;
+  margin: 0;
+}
+
+.site-shell:not(.home-shell) .page-view {
+  width: 100%;
+  max-width: none;
+  min-height: 0;
+  height: 100%;
+  max-height: 100%;
+  padding: clamp(5.5rem, 9vh, 7rem) clamp(1.25rem, 6vw, 6rem) clamp(0.75rem, 3vh, 1.75rem);
+}
+
+@media (max-width: 720px) {
+  .site-shell:not(.home-shell) .site-header {
+    padding-right: 12px;
+    padding-left: 12px;
+  }
+
+  .site-shell:not(.home-shell) .page-view {
+    padding: 5.75rem 0.85rem 0.65rem;
+  }
+}
+
+.site-shell .page-view.view-home {
+  width: 100%;
+  max-width: none;
+  min-height: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+.site-shell .page-view.view-home .home-hero {
+  width: 100%;
+  min-height: 100%;
+  height: 100%;
 }
